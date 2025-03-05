@@ -82,30 +82,31 @@ int main(void)
 			// 				m.nc_10p0, m.typical_particle_size);
 
 			// Commented out code above is more concise. but formatting on DSD tech app is weird so have to send each measurement individually
-			sprintf(SPS30_measurements, "measured values:\n");
+			sprintf(SPS30_measurements, "measured values:\n\r");
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm1.0\n", m.mc_1p0);
+			sprintf(SPS30_measurements, "%.2f pm1.0\n\r", m.mc_1p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm2.5\n", m.mc_2p5);
+			sprintf(SPS30_measurements, "%.2f pm2.5\n\r", m.mc_2p5);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm4.0\n", m.mc_4p0);
+			sprintf(SPS30_measurements, "%.2f pm4.0\n\r", m.mc_4p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm10.0\n", m.mc_10p0);
+			sprintf(SPS30_measurements, "%.2f pm10.0\n\r", m.mc_10p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc0.5\n", m.nc_0p5);
+			sprintf(SPS30_measurements, "%.2f nc0.5\n\r", m.nc_0p5);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc1.0\n", m.nc_1p0);
+			sprintf(SPS30_measurements, "%.2f nc1.0\n\r", m.nc_1p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc2.5\n", m.nc_2p5);
+			sprintf(SPS30_measurements, "%.2f nc2.5\n\r", m.nc_2p5);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc4.5\n", m.nc_4p0);
+			sprintf(SPS30_measurements, "%.2f nc4.5\n\r", m.nc_4p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc10.0\n", m.nc_10p0);
+			sprintf(SPS30_measurements, "%.2f nc10.0\n\r", m.nc_10p0);
 			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f typical particle size\n", m.typical_particle_size);
+			sprintf(SPS30_measurements, "%.2f typical particle size\n\r", m.typical_particle_size);
 			HM10_transmit(SPS30_measurements);  
-
+			
 			sensirion_sleep_usec(5000000);
+			
         }
 	}
 
@@ -173,7 +174,7 @@ void HM10_transmit(const char* str)
 		printf("%c", *str);
         uart1_transmit(*str++);
     }
-	printf(" to HM10\n");
+	printf(" to HM10\n\r");
 }
 
 // Clear HM10 buffer
