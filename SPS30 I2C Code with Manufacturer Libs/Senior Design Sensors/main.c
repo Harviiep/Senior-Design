@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "sps30-i2c-3.1.1\sps30-i2c-3.1.1\sps30.h"
+#include <util/delay.h>
 
 #define F_CPU 16000000UL
 #define BAUD 9600                                   // define baud
@@ -27,6 +28,9 @@ void HM10_transmit(const char* str);
 void HM10_init();
 void HM10_print_response_buffer();
 void sps30_init();
+void ADC_init(void);
+uint16_t ADC_Read();
+float convert_ADC_to_pressure(uint16_t adc_value);
 
 FILE uart0_output = FDEV_SETUP_STREAM(uart0_putchar, NULL, _FDEV_SETUP_WRITE);
 
@@ -43,6 +47,7 @@ int main(void)
 	sei(); // Enable global interrupts
 	sensirion_i2c_init(); // Must call or sensirion libs don't work. Currently empty. 
 	sps30_init(); // Initialize SPS30
+	ADC_init();
 	HM10_init(); 
 
 	printf("Initialization Complete!\n\n");
@@ -55,6 +60,34 @@ int main(void)
 
     while (1) 
 	{
+		char pressure_sensor_reading[256];
+		uint16_t res = ADC_Read();	// ADC conversion for pressure sensor
+      
+		// Voltage Conversion
+        float output_voltage = (res/1023.0) * 5.0;	
+        if(output_voltage < 0.5){
+            output_voltage = 0.5;
+        }
+        else if(output_voltage > 4.5){
+            output_voltage = 4.5;
+        }
+		
+		// Convert ADC voltage to pressure reading
+    	float pressure_value = convert_ADC_to_pressure(res);	
+        
+		// sprintf(pressure_sensor_reading, "ADC Reading: %u", res);
+		// HM10_transmit(pressure_sensor_reading);
+		// sprintf(pressure_sensor_reading, "Output Voltage: %.2fV", output_voltage);
+		// HM10_transmit(pressure_sensor_reading);
+
+		// Send Pressure Reading to HM10
+		sprintf(pressure_sensor_reading, "Pressure: %.2fkPa", pressure_value);
+		HM10_transmit(pressure_sensor_reading);
+		sprintf(pressure_sensor_reading, "\r\n\r\n");
+		HM10_transmit(pressure_sensor_reading);
+
+		_delay_ms(5000); // 5 seconds
+
         sensirion_sleep_usec(SPS30_MEASUREMENT_DURATION_USEC); /* wait 1s */
         SPS30_command_response_code = sps30_read_measurement(&m);
 		
@@ -81,7 +114,7 @@ int main(void)
 			// 				m.nc_0p5, m.nc_1p0, m.nc_2p5, m.nc_4p0, 
 			// 				m.nc_10p0, m.typical_particle_size);
 
-			// Commented out code above is more concise. but formatting on DSD tech app is weird so have to send each measurement individually
+			//Commented out code above is more concise. but formatting on DSD tech app is weird so have to send each measurement individually
 			sprintf(SPS30_measurements, "measured values:\n");
 			HM10_transmit(SPS30_measurements);  
 			sprintf(SPS30_measurements, "%.2f pm1.0\n", m.mc_1p0);
@@ -201,17 +234,36 @@ void HM10_print_response_buffer()
 // Initialize HM10
 void HM10_init()
 {
-	HM10_transmit("AT");
+	printf("Inside: HM10 Init\n");
+	HM10_transmit("AT+RENEW");
+	HM10_print_response_buffer();
+	HM10_clear_response_buffer();
 	sensirion_sleep_usec(2000000);
-
 	// Wait until HM10 responds with "OK"
 	while(!(HM10_response_buffer[0] == 0x4F && HM10_response_buffer[1] == 0x4B))
 	{
-		HM10_transmit("AT");
+		HM10_transmit("AT+RENEW");
 		sensirion_sleep_usec(2000000);
 	}
 	HM10_print_response_buffer();
 	HM10_clear_response_buffer();
+	sensirion_sleep_usec(2000000);
+
+	// HM10_transmit("AT");
+	// sensirion_sleep_usec(2000000);
+
+	// // Wait until HM10 responds with "OK"
+	// while(!(HM10_response_buffer[0] == 0x4F && HM10_response_buffer[1] == 0x4B))
+	// {
+	// 	HM10_transmit("AT");
+	// 	sensirion_sleep_usec(2000000);
+	// }
+	// HM10_print_response_buffer();
+	// HM10_clear_response_buffer();
+	
+	// HM10_transmit("AT+RESET");
+	// HM10_print_response_buffer();
+	// HM10_clear_response_buffer();
 
 	// Start broadcasting
 	HM10_transmit("AT+NAMEScene_Safe");
@@ -258,6 +310,38 @@ void sps30_init()
 	else {
         printf("Serial Number: %s\n", serial_number);
     }
+}
+
+//fucntions for ADC functionality
+void ADC_init(){	//initialize ADC
+	ADCSRA |= (1 << ADEN);	//enables ADC and interrupt enable
+	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);	//prescales ADC (factor of 128)
+	ADMUX = (1<<REFS0);  // AVCC (5V) as reference, ADC0 selected
+	DDRC &= ~(1 << PINC0);	//setting input as PORTC pin 3
+}
+
+uint16_t ADC_Read() {
+	uint16_t ADC_conversion;	//16 bit integer to hold ADC conversion result
+	ADCSRA |= (1<<ADSC);  // Start conversion
+	while (ADCSRA & (1<<ADSC));  // Wait for conversion to complete
+	ADC_conversion |= ADCL;	//extracting conversion from lower register
+	ADC_conversion |= (ADCH << 8);	//extracting upper bits of conversion from ADCH register
+	return ADC_conversion;
+}
+
+
+float convert_ADC_to_pressure(uint16_t adc_value) {
+	float output_voltage = (adc_value / 1023.0) * 5.0;	//using ADC conversion value to get sensor output voltage
+	float pressure_reading = (output_voltage - 2.5) / 0.05;	//using pressure conversion formula to get sensor reading (page 5 of data sheet)
+	if(pressure_reading < -40){
+		pressure_reading = -40;
+		printf("Extreme Negative Pressure");
+	}
+	else if(pressure_reading > 40){
+		pressure_reading = 40;
+		printf("Extreme Positive Pressure");
+	}
+	return pressure_reading;
 }
 
 // ISR to handle USART1 rx from HM10
