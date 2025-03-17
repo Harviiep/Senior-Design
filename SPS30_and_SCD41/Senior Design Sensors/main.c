@@ -69,15 +69,80 @@ int main(void)
     if (error != NO_ERROR) {
         printf("error executing wake_up(): %i\n", error);
     }
+	
+	error = scd4x_stop_periodic_measurement();
+	if (error != NO_ERROR) {
+		printf("error executing stop_periodic_measurement(): %i\n", error);
+	}
+	
+	 error = scd4x_reinit();
+	 if (error != NO_ERROR) {
+		 printf("error executing reinit(): %i\n", error);
+	 }
+	 
+	  error = scd4x_get_serial_number(serial_number, 3);
+	  if (error != NO_ERROR) {
+		  printf("error executing get_serial_number(): %i\n", error);
+		  return error;
+	  }
+	  printf("serial number: ");
+	  convert_and_print_serial(serial_number);
+	  printf("\n");
+	  
+	  error = scd4x_start_periodic_measurement();
+	  if (error != NO_ERROR) {
+		  printf("error executing start_periodic_measurement(): %i\n", error);
+		  return error;
+	  }
+	  printf("Measurements Started.\r\n\n");
+	  
+	  bool data_ready = false;
+	  uint16_t co2_concentration = 0;
+	  int32_t temperature = 0;
+	  uint32_t relative_humidity = 0;
+	  uint16_t repetition = 0;
+	  for (repetition = 0; repetition < 1; repetition++) {
+		  //
+		  // Slow down the sampling to 0.2Hz.
+		  //
+		  _delay_ms(5000);
+		  //
+		  // If ambient pressure compensation during measurement
+		  // is required, you should call the respective functions here.
+		  // Check out the header file for the function definition.
+		  error = scd4x_get_data_ready_status(&data_ready);
+		  if (error != NO_ERROR) {
+			  printf("error executing get_data_ready_status(): %i\n", error);
+			  continue;
+		  }
+		  while (!data_ready) {
+			   _delay_ms(5000);
+			  error = scd4x_get_data_ready_status(&data_ready);
+			  if (error != NO_ERROR) {
+				  printf("error executing get_data_ready_status(): %i\n", error);
+				  continue;
+			  }
+		  }
+		  error = scd4x_read_measurement(&co2_concentration, &temperature,
+		  &relative_humidity);
+		  if (error != NO_ERROR) {
+			  printf("error executing read_measurement(): %i\n", error);
+			  continue;
+		  }
+		  
+		  temperature /= 1000;	//scaling temperature to print as normal Celsius
+		  relative_humidity /= 1000; //scaling relative humidity to print as normal percentage
+		  //
+		  // Print results in physical units.
+		  printf("SCD41 Readings:\n");
+		  printf("CO2 concentration [ppm]: %u\n", co2_concentration);
+		  printf("Temperature [°C] : %i\xB0 C\n", temperature);
+		  printf("Humidity [RH]: %u%%\n", relative_humidity);
+		  printf("/////////////////////////////////////////////////////\n");	//code that interfaces with SCD41 ^^^^^^^
+	  }
+	  
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    int16_t SPS30_command_response_code = sps30_start_measurement();
-    if (SPS30_command_response_code < 0)
-        printf("error starting measurement\n");
-
-    printf("measurements started\n");
-
-    while (1) 
-	{
 		char pressure_sensor_reading[256];
 		uint16_t res = ADC_Read();	// ADC conversion for pressure sensor
       
@@ -92,21 +157,32 @@ int main(void)
 		
 		// Convert ADC voltage to pressure reading
     	float pressure_value = convert_ADC_to_pressure(res);	
-        
-		// sprintf(pressure_sensor_reading, "ADC Reading: %u", res);
-		// HM10_transmit(pressure_sensor_reading);
-		// sprintf(pressure_sensor_reading, "Output Voltage: %.2fV", output_voltage);
-		// HM10_transmit(pressure_sensor_reading);
+		printf("Pressure Sensor Readings:\n");
+        printf("Pressure: %.2f kPa\n", pressure_value);
+		printf("/////////////////////////////////////////////////////\n");	//code that interfaces with pressure sensor
+	
+		/*
+		 sprintf(pressure_sensor_reading, "ADC Reading: %u", res);
+		 HM10_transmit(pressure_sensor_reading);
+		 sprintf(pressure_sensor_reading, "Output Voltage: %.2fV", output_voltage);
+		 HM10_transmit(pressure_sensor_reading);
 
-		// Send Pressure Reading to HM10
+		 Send Pressure Reading to HM10
 		sprintf(pressure_sensor_reading, "Pressure: %.2fkPa", pressure_value);
 		HM10_transmit(pressure_sensor_reading);
 		sprintf(pressure_sensor_reading, "\r\n\r\n");
 		HM10_transmit(pressure_sensor_reading);
 
-		_delay_ms(1000); // 5 seconds
+		_delay_ms(1000);  5 seconds */
+		
+		int16_t SPS30_command_response_code = sps30_start_measurement();
+		if (SPS30_command_response_code < 0){
+			printf("error starting measurement\n");
+		}
 
-        sensirion_sleep_usec(SPS30_MEASUREMENT_DURATION_USEC); /* wait 1s */
+		printf("SPS30 Readings:\n");
+        sensirion_sleep_usec(SPS30_MEASUREMENT_DURATION_USEC); // wait 1s 
+		
         SPS30_command_response_code = sps30_read_measurement(&m);
 		
         if (SPS30_command_response_code < 0) 
@@ -115,7 +191,7 @@ int main(void)
         } 
 		else 
 		{			
-			char SPS30_measurements[256];  
+			char SPS30_measurements[256]; 
 			
 			// sprintf(SPS30_measurements, "measured values:\n"
 			// 				"  %.2f pm1.0\n"
@@ -133,35 +209,35 @@ int main(void)
 			// 				m.nc_10p0, m.typical_particle_size);
 
 			//Commented out code above is more concise. but formatting on DSD tech app is weird so have to send each measurement individually
-			sprintf(SPS30_measurements, "measured values:\n");
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm1.0\n", m.mc_1p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm2.5\n", m.mc_2p5);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm4.0\n", m.mc_4p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f pm10.0\n", m.mc_10p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc0.5\n", m.nc_0p5);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc1.0\n", m.nc_1p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc2.5\n", m.nc_2p5);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc4.5\n", m.nc_4p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f nc10.0\n", m.nc_10p0);
-			HM10_transmit(SPS30_measurements);  
-			sprintf(SPS30_measurements, "%.2f typical particle size\n", m.typical_particle_size);
-			HM10_transmit(SPS30_measurements);  
+			//sprintf(SPS30_measurements, "measured values:\n");
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f pm1.0\n", m.mc_1p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f pm2.5\n", m.mc_2p5);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f pm4.0\n", m.mc_4p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f pm10.0\n", m.mc_10p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f nc0.5\n", m.nc_0p5);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f nc1.0\n", m.nc_1p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f nc2.5\n", m.nc_2p5);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f nc4.5\n", m.nc_4p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f nc10.0\n", m.nc_10p0);
+			//HM10_transmit(SPS30_measurements);  
+			printf("%.2f typical particle size\n", m.typical_particle_size);
+			//HM10_transmit(SPS30_measurements);  
 
-			sensirion_sleep_usec(5000000); // here specifically, sensirion_sleep_usec is the only delay that works for some reason
-        }
-	}
+			//sensirion_sleep_usec(5000000); // here specifically, sensirion_sleep_usec is the only delay that works for some reason
+        } 
 
     return 0;
 }
+//}
 
 void uart0_init (void)
 {

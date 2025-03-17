@@ -41,7 +41,11 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libprintf_flt.a(vfprintf_flt.o)
                               (vfprintf)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                              sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o (__udivmodsi4)
+                              main.o (__udivmodsi4)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+                              main.o (__divmodsi4)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o) (__negsi2)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
@@ -72,8 +76,6 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
                               main.o (putchar)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
                               main.o (puts)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                              main.o (sprintf)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libprintf_flt.a(vfprintf_flt.o) (__ultoa_invert)
 
@@ -96,13 +98,9 @@ Discarded input sections
                 0x00000000       0x10 main.o
  .text.init_printf
                 0x00000000        0xe main.o
- .text.convert_and_print_serial
-                0x00000000       0x7a main.o
  .text          0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .data          0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .bss           0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .text.sensirion_bytes_to_uint16_t
-                0x00000000       0x14 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .text.sensirion_i2c_general_call_reset
                 0x00000000       0x2c sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .text.sensirion_common_bytes_to_int16_t
@@ -123,10 +121,6 @@ Discarded input sections
                 0x00000000        0x8 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .text.sensirion_common_float_to_bytes
                 0x00000000        0x6 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .text.sensirion_common_copy_bytes
-                0x00000000       0x1c sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .text.sensirion_common_to_integer
-                0x00000000       0x5e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .text          0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
  .data          0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
  .bss           0x00000000        0x0 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
@@ -173,16 +167,8 @@ Discarded input sections
                 0x00000000        0x6 sps30_hw_i2c_implementation.o
  .text.sensirion_i2c_release
                 0x00000000        0x2 sps30_hw_i2c_implementation.o
- .text.sensirion_i2c_hal_read
-                0x00000000       0x2a sps30_hw_i2c_implementation.o
- .text.sensirion_i2c_generate_crc
-                0x00000000       0x32 sps30_hw_i2c_implementation.o
  .text.sensirion_i2c_add_uint16_t_to_buffer
                 0x00000000       0x3c sps30_hw_i2c_implementation.o
- .text.sensirion_i2c_check_crc
-                0x00000000       0x16 sps30_hw_i2c_implementation.o
- .text.sensirion_i2c_read_data_inplace
-                0x00000000       0xa4 sps30_hw_i2c_implementation.o
  .text          0x00000000        0x0 scd41_driver/scd4x_i2c.o
  .data          0x00000000        0x0 scd41_driver/scd4x_i2c.o
  .bss           0x00000000        0x0 scd41_driver/scd4x_i2c.o
@@ -190,14 +176,6 @@ Discarded input sections
                 0x00000000        0x2 scd41_driver/scd4x_i2c.o
  .text.scd4x_signal_ambient_pressure
                 0x00000000        0xc scd41_driver/scd4x_i2c.o
- .text.scd4x_start_periodic_measurement
-                0x00000000       0x20 scd41_driver/scd4x_i2c.o
- .text.scd4x_read_measurement_raw
-                0x00000000       0x9c scd41_driver/scd4x_i2c.o
- .text.scd4x_read_measurement
-                0x00000000       0xa6 scd41_driver/scd4x_i2c.o
- .text.scd4x_stop_periodic_measurement
-                0x00000000       0x3c scd41_driver/scd4x_i2c.o
  .text.scd4x_set_temperature_offset_raw
                 0x00000000       0x4a scd41_driver/scd4x_i2c.o
  .text.scd4x_get_temperature_offset_raw
@@ -226,19 +204,11 @@ Discarded input sections
                 0x00000000       0x6e scd41_driver/scd4x_i2c.o
  .text.scd4x_start_low_power_periodic_measurement
                 0x00000000       0x20 scd41_driver/scd4x_i2c.o
- .text.scd4x_get_data_ready_status_raw
-                0x00000000       0x6e scd41_driver/scd4x_i2c.o
- .text.scd4x_get_data_ready_status
-                0x00000000       0x40 scd41_driver/scd4x_i2c.o
  .text.scd4x_persist_settings
                 0x00000000       0x3c scd41_driver/scd4x_i2c.o
- .text.scd4x_get_serial_number
-                0x00000000       0x7a scd41_driver/scd4x_i2c.o
  .text.scd4x_perform_self_test
                 0x00000000       0x6e scd41_driver/scd4x_i2c.o
  .text.scd4x_perform_factory_reset
-                0x00000000       0x3c scd41_driver/scd4x_i2c.o
- .text.scd4x_reinit
                 0x00000000       0x3c scd41_driver/scd4x_i2c.o
  .text.scd4x_get_sensor_variant_raw
                 0x00000000       0x6e scd41_driver/scd4x_i2c.o
@@ -325,8 +295,6 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
- .text.libgcc.div
-                0x00000000       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
@@ -336,6 +304,34 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -387,8 +383,6 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.mul
-                0x00000000       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc.div
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
  .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
@@ -468,9 +462,6 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
@@ -608,7 +599,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x225c
+.text           0x00000000     0x29a0
  *(.vectors)
  .vectors       0x00000000       0xb4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
                 0x00000000                __vector_default
@@ -751,197 +742,254 @@ END GROUP
  .text.convert_ADC_to_pressure
                 0x000004bc       0xba main.o
                 0x000004bc                convert_ADC_to_pressure
- .text.main     0x00000576      0x318 main.o
-                0x00000576                main
+ .text.convert_and_print_serial
+                0x00000576       0x7a main.o
+                0x00000576                convert_and_print_serial
+ .text.main     0x000005f0      0x4e0 main.o
+                0x000005f0                main
  .text.__vector_28
-                0x0000088e       0x7c main.o
-                0x0000088e                __vector_28
+                0x00000ad0       0x7c main.o
+                0x00000ad0                __vector_28
+ .text.sensirion_bytes_to_uint16_t
+                0x00000b4c       0x14 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000b4c                sensirion_bytes_to_uint16_t
  .text.sensirion_bytes_to_uint32_t
-                0x0000090a       0x24 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x0000090a                sensirion_bytes_to_uint32_t
+                0x00000b60       0x24 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000b60                sensirion_bytes_to_uint32_t
  .text.sensirion_bytes_to_float
-                0x0000092e        0x6 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x0000092e                sensirion_bytes_to_float
+                0x00000b84        0x6 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000b84                sensirion_bytes_to_float
  .text.sensirion_common_generate_crc
-                0x00000934       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000934                sensirion_common_generate_crc
+                0x00000b8a       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000b8a                sensirion_common_generate_crc
  .text.sensirion_common_check_crc
-                0x00000966       0x18 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000966                sensirion_common_check_crc
+                0x00000bbc       0x18 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000bbc                sensirion_common_check_crc
  .text.sensirion_fill_cmd_send_buf
-                0x0000097e       0x68 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x0000097e                sensirion_fill_cmd_send_buf
+                0x00000bd4       0x68 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000bd4                sensirion_fill_cmd_send_buf
  .text.sensirion_i2c_read_words_as_bytes
-                0x000009e6      0x122 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x000009e6                sensirion_i2c_read_words_as_bytes
+                0x00000c3c      0x122 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000c3c                sensirion_i2c_read_words_as_bytes
  .text.sensirion_i2c_read_words
-                0x00000b08       0x56 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000b08                sensirion_i2c_read_words
+                0x00000d5e       0x56 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000d5e                sensirion_i2c_read_words
  .text.sensirion_i2c_write_cmd
-                0x00000b5e       0x3e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000b5e                sensirion_i2c_write_cmd
+                0x00000db4       0x3e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000db4                sensirion_i2c_write_cmd
  .text.sensirion_i2c_write_cmd_with_args
-                0x00000b9c       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000b9c                sensirion_i2c_write_cmd_with_args
+                0x00000df2       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000df2                sensirion_i2c_write_cmd_with_args
  .text.sensirion_i2c_delayed_read_cmd
-                0x00000be4       0x8a sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000be4                sensirion_i2c_delayed_read_cmd
+                0x00000e3a       0x8a sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000e3a                sensirion_i2c_delayed_read_cmd
  .text.sensirion_i2c_read_cmd
-                0x00000c6e       0x20 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
-                0x00000c6e                sensirion_i2c_read_cmd
+                0x00000ec4       0x20 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000ec4                sensirion_i2c_read_cmd
+ .text.sensirion_common_copy_bytes
+                0x00000ee4       0x1c sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000ee4                sensirion_common_copy_bytes
+ .text.sensirion_common_to_integer
+                0x00000f00       0x5e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x00000f00                sensirion_common_to_integer
  .text.sps30_read_firmware_version
-                0x00000c8e       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000c8e                sps30_read_firmware_version
+                0x00000f5e       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x00000f5e                sps30_read_firmware_version
  .text.sps30_get_serial
-                0x00000cd6       0x2e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000cd6                sps30_get_serial
+                0x00000fa6       0x2e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x00000fa6                sps30_get_serial
  .text.sps30_start_measurement
-                0x00000d04       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000d04                sps30_start_measurement
+                0x00000fd4       0x48 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x00000fd4                sps30_start_measurement
  .text.sps30_read_measurement
-                0x00000d4c      0x11c sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000d4c                sps30_read_measurement
+                0x0000101c      0x11c sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x0000101c                sps30_read_measurement
  .text.sps30_wake_up
-                0x00000e68       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000e68                sps30_wake_up
+                0x00001138       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x00001138                sps30_wake_up
  .text.sps30_probe
-                0x00000e9a       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
-                0x00000e9a                sps30_probe
+                0x0000116a       0x32 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+                0x0000116a                sps30_probe
  .text.sensirion_i2c_init
-                0x00000ecc        0xc sps30_hw_i2c_implementation.o
-                0x00000ecc                sensirion_i2c_init
+                0x0000119c        0xc sps30_hw_i2c_implementation.o
+                0x0000119c                sensirion_i2c_init
  .text.sensirion_sleep_usec
-                0x00000ed8      0x148 sps30_hw_i2c_implementation.o
-                0x00000ed8                sensirion_sleep_usec
- .text.i2c_io   0x00001020      0x1b2 sps30_hw_i2c_implementation.o
-                0x00001020                i2c_io
+                0x000011a8      0x148 sps30_hw_i2c_implementation.o
+                0x000011a8                sensirion_sleep_usec
+ .text.i2c_io   0x000012f0      0x1b2 sps30_hw_i2c_implementation.o
+                0x000012f0                i2c_io
  .text.sensirion_i2c_read
-                0x000011d2       0x28 sps30_hw_i2c_implementation.o
-                0x000011d2                sensirion_i2c_read
+                0x000014a2       0x28 sps30_hw_i2c_implementation.o
+                0x000014a2                sensirion_i2c_read
  .text.sensirion_i2c_write
-                0x000011fa       0x24 sps30_hw_i2c_implementation.o
-                0x000011fa                sensirion_i2c_write
+                0x000014ca       0x24 sps30_hw_i2c_implementation.o
+                0x000014ca                sensirion_i2c_write
  .text.sensirion_i2c_hal_write
-                0x0000121e       0x24 sps30_hw_i2c_implementation.o
-                0x0000121e                sensirion_i2c_hal_write
+                0x000014ee       0x24 sps30_hw_i2c_implementation.o
+                0x000014ee                sensirion_i2c_hal_write
  .text.sensirion_i2c_write_data
-                0x00001242        0xc sps30_hw_i2c_implementation.o
-                0x00001242                sensirion_i2c_write_data
+                0x00001512        0xc sps30_hw_i2c_implementation.o
+                0x00001512                sensirion_i2c_write_data
+ .text.sensirion_i2c_hal_read
+                0x0000151e       0x2a sps30_hw_i2c_implementation.o
+                0x0000151e                sensirion_i2c_hal_read
  .text.sensirion_i2c_add_command16_to_buffer
-                0x0000124e       0x10 sps30_hw_i2c_implementation.o
-                0x0000124e                sensirion_i2c_add_command16_to_buffer
+                0x00001548       0x10 sps30_hw_i2c_implementation.o
+                0x00001548                sensirion_i2c_add_command16_to_buffer
+ .text.sensirion_i2c_generate_crc
+                0x00001558       0x32 sps30_hw_i2c_implementation.o
+                0x00001558                sensirion_i2c_generate_crc
+ .text.sensirion_i2c_check_crc
+                0x0000158a       0x16 sps30_hw_i2c_implementation.o
+                0x0000158a                sensirion_i2c_check_crc
+ .text.sensirion_i2c_read_data_inplace
+                0x000015a0       0xa4 sps30_hw_i2c_implementation.o
+                0x000015a0                sensirion_i2c_read_data_inplace
  .text.scd4x_init
-                0x0000125e        0x6 scd41_driver/scd4x_i2c.o
-                0x0000125e                scd4x_init
+                0x00001644        0x6 scd41_driver/scd4x_i2c.o
+                0x00001644                scd4x_init
+ .text.scd4x_start_periodic_measurement
+                0x0000164a       0x20 scd41_driver/scd4x_i2c.o
+                0x0000164a                scd4x_start_periodic_measurement
+ .text.scd4x_read_measurement_raw
+                0x0000166a       0x9c scd41_driver/scd4x_i2c.o
+                0x0000166a                scd4x_read_measurement_raw
+ .text.scd4x_read_measurement
+                0x00001706       0xa6 scd41_driver/scd4x_i2c.o
+                0x00001706                scd4x_read_measurement
+ .text.scd4x_stop_periodic_measurement
+                0x000017ac       0x3c scd41_driver/scd4x_i2c.o
+                0x000017ac                scd4x_stop_periodic_measurement
+ .text.scd4x_get_data_ready_status_raw
+                0x000017e8       0x6e scd41_driver/scd4x_i2c.o
+                0x000017e8                scd4x_get_data_ready_status_raw
+ .text.scd4x_get_data_ready_status
+                0x00001856       0x40 scd41_driver/scd4x_i2c.o
+                0x00001856                scd4x_get_data_ready_status
+ .text.scd4x_get_serial_number
+                0x00001896       0x7a scd41_driver/scd4x_i2c.o
+                0x00001896                scd4x_get_serial_number
+ .text.scd4x_reinit
+                0x00001910       0x3c scd41_driver/scd4x_i2c.o
+                0x00001910                scd4x_reinit
  .text.scd4x_wake_up
-                0x00001264       0x30 scd41_driver/scd4x_i2c.o
-                0x00001264                scd4x_wake_up
+                0x0000194c       0x30 scd41_driver/scd4x_i2c.o
+                0x0000194c                scd4x_wake_up
  .text.avr-libc.fplib
-                0x00001294        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
-                0x00001294                __subsf3
-                0x00001296                __addsf3
+                0x0000197c        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                0x0000197c                __subsf3
+                0x0000197e                __addsf3
  .text.avr-libc.fplib
-                0x000012a2       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
-                0x000012c4                __addsf3x
+                0x0000198a       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                0x000019ac                __addsf3x
  .text.avr-libc.fplib
-                0x0000136e        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
-                0x0000136e                __nesf2
-                0x0000136e                __eqsf2
-                0x0000136e                __cmpsf2
-                0x0000136e                __ltsf2
-                0x0000136e                __lesf2
+                0x00001a56        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                0x00001a56                __nesf2
+                0x00001a56                __eqsf2
+                0x00001a56                __cmpsf2
+                0x00001a56                __ltsf2
+                0x00001a56                __lesf2
  .text.avr-libc.fplib
-                0x00001378        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
-                0x00001378                __divsf3
+                0x00001a60        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
+                0x00001a60                __divsf3
  .text.avr-libc.fplib
-                0x00001380       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
-                0x000013a0                __divsf3x
-                0x000013a6                __divsf3_pse
+                0x00001a68       0xdc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
+                0x00001a88                __divsf3x
+                0x00001a8e                __divsf3_pse
  .text.avr-libc.fplib
-                0x0000145c       0x5e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
-                0x0000145c                __fixunssfsi
+                0x00001b44       0x5e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x00001b44                __fixunssfsi
  .text.avr-libc.fplib
-                0x000014ba       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x000014ba                __floatunsisf
-                0x000014be                __floatsisf
+                0x00001ba2       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x00001ba2                __floatunsisf
+                0x00001ba6                __floatsisf
  .text.avr-libc.fplib
-                0x00001534       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
-                0x00001534                __fp_cmp
+                0x00001c1c       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x00001c1c                __fp_cmp
  .text.avr-libc.fplib
-                0x0000157c        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
-                0x0000157c                __fp_inf
+                0x00001c64        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x00001c64                __fp_inf
  .text.avr-libc.fplib
-                0x00001588        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
-                0x00001588                __fp_nan
+                0x00001c70        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x00001c70                __fp_nan
  .text.avr-libc.fplib
-                0x0000158e        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
-                0x0000158e                __fp_pscA
+                0x00001c76        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x00001c76                __fp_pscA
  .text.avr-libc.fplib
-                0x0000159c        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
-                0x0000159c                __fp_pscB
+                0x00001c84        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x00001c84                __fp_pscB
  .text.avr-libc.fplib
-                0x000015aa       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
-                0x000015aa                __fp_round
+                0x00001c92       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x00001c92                __fp_round
  .text.avr-libc.fplib
-                0x000015cc       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
-                0x000015cc                __fp_split3
-                0x000015dc                __fp_splitA
+                0x00001cb4       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x00001cb4                __fp_split3
+                0x00001cc4                __fp_splitA
  .text.avr-libc.fplib
-                0x00001610        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
-                0x00001610                __fp_zero
-                0x00001612                __fp_szero
+                0x00001cf8        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x00001cf8                __fp_zero
+                0x00001cfa                __fp_szero
  .text.avr-libc.fplib
-                0x0000161e        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
-                0x0000161e                __gesf2
-                0x0000161e                __gtsf2
+                0x00001d06        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                0x00001d06                __gesf2
+                0x00001d06                __gtsf2
  .text.avr-libc.fplib
-                0x00001628        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
-                0x00001628                __mulsf3
+                0x00001d10        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
+                0x00001d10                __mulsf3
  .text.avr-libc.fplib
-                0x00001630       0xd2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
-                0x0000164e                __mulsf3x
-                0x00001654                __mulsf3_pse
+                0x00001d18       0xd2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
+                0x00001d36                __mulsf3x
+                0x00001d3c                __mulsf3_pse
  .text.avr-libc
-                0x00001702      0x6fa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libprintf_flt.a(vfprintf_flt.o)
-                0x00001702                vfprintf
+                0x00001dea      0x6fa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libprintf_flt.a(vfprintf_flt.o)
+                0x00001dea                vfprintf
+ .text.libgcc.div
+                0x000024e4       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
+                0x000024e4                __udivmodsi4
+ .text.libgcc.div
+                0x00002528       0x2e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodsi4.o)
+                0x00002528                __divmodsi4
+ .text.libgcc.div
+                0x00002556       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_negsi2.o)
+                0x00002556                __negsi2
+ .text.libgcc.mul
+                0x00002566       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x00002566                __umulhisi3
  .text.libgcc.prologue
-                0x00001dfc       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
-                0x00001dfc                __prologue_saves__
+                0x00002584       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
+                0x00002584                __prologue_saves__
  .text.libgcc.prologue
-                0x00001e34       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
-                0x00001e34                __epilogue_restores__
+                0x000025bc       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
+                0x000025bc                __epilogue_restores__
  .text.avr-libc
-                0x00001e6a      0x1b0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
-                0x00001e6a                __ftoa_engine
+                0x000025f2      0x1b0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ftoa_engine.o)
+                0x000025f2                __ftoa_engine
  .text.avr-libc
-                0x0000201a       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x0000201a                strnlen_P
+                0x000027a2       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x000027a2                strnlen_P
  .text.avr-libc
-                0x00002030       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x00002030                strnlen
+                0x000027b8       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x000027b8                strnlen
  .text.avr-libc
-                0x00002046       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00002046                fputc
+                0x000027ce       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x000027ce                fputc
  .text.avr-libc
-                0x000020be       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(printf.o)
-                0x000020be                printf
+                0x00002846       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(printf.o)
+                0x00002846                printf
  .text.avr-libc
-                0x000020ea        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(putchar.o)
-                0x000020ea                putchar
+                0x00002872        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(putchar.o)
+                0x00002872                putchar
  .text.avr-libc
-                0x000020f8       0x60 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
-                0x000020f8                puts
+                0x00002880       0x60 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
+                0x00002880                puts
  .text.avr-libc
-                0x00002158       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                0x00002158                sprintf
- .text.avr-libc
-                0x0000219c       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x0000219c                __ultoa_invert
-                0x00002258                . = ALIGN (0x2)
+                0x000028e0       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x000028e0                __ultoa_invert
+                0x0000299c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002258        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00002258                _exit
-                0x00002258                exit
+ .fini9         0x0000299c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000299c                _exit
+                0x0000299c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -960,11 +1008,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002258        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000299c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000225c                _etext = .
+                0x000029a0                _etext = .
 
-.data           0x00800100      0x2e6 load address 0x0000225c
+.data           0x00800100      0x4a0 load address 0x000029a0
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -975,43 +1023,44 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0080010e      0x293 main.o
-                                0x296 (size before relaxing)
+                0x0080010e      0x44c main.o
+                                0x44f (size before relaxing)
  .rodata.str1.1
-                0x008003a1       0x36 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+                0x0080055a       0x36 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
  .rodata.str1.1
-                0x008003d7        0xf sps30_hw_i2c_implementation.o
+                0x00800590        0xf sps30_hw_i2c_implementation.o
  *(.gnu.linkonce.r*)
-                0x008003e6                . = ALIGN (0x2)
-                0x008003e6                _edata = .
-                0x008003e6                PROVIDE (__data_end, .)
+                0x008005a0                . = ALIGN (0x2)
+ *fill*         0x0080059f        0x1 
+                0x008005a0                _edata = .
+                0x008005a0                PROVIDE (__data_end, .)
 
-.bss            0x008003e6       0x79
-                0x008003e6                PROVIDE (__bss_start, .)
+.bss            0x008005a0       0x79
+                0x008005a0                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.HM10_response_buffer_index
-                0x008003e6        0x1 main.o
-                0x008003e6                HM10_response_buffer_index
+                0x008005a0        0x1 main.o
+                0x008005a0                HM10_response_buffer_index
  .bss._i2c_address
-                0x008003e7        0x1 scd41_driver/scd4x_i2c.o
+                0x008005a1        0x1 scd41_driver/scd4x_i2c.o
  .bss.communication_buffer
-                0x008003e8        0x9 scd41_driver/scd4x_i2c.o
+                0x008005a2        0x9 scd41_driver/scd4x_i2c.o
  *(COMMON)
- COMMON         0x008003f1       0x68 main.o
-                0x008003f1                HM10_response_buffer
-                0x00800431                m
- COMMON         0x00800459        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(iob.o)
-                0x00800459                __iob
-                0x0080045f                PROVIDE (__bss_end, .)
-                0x0000225c                __data_load_start = LOADADDR (.data)
-                0x00002542                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008005ab       0x68 main.o
+                0x008005ab                HM10_response_buffer
+                0x008005eb                m
+ COMMON         0x00800613        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(iob.o)
+                0x00800613                __iob
+                0x00800619                PROVIDE (__bss_end, .)
+                0x000029a0                __data_load_start = LOADADDR (.data)
+                0x00002e40                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080045f        0x0
+.noinit         0x00800619        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080045f                _end = .
+                0x00800619                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -1066,7 +1115,6 @@ END GROUP
  .comment       0x0000005c       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(printf.o)
  .comment       0x0000005c       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(putchar.o)
  .comment       0x0000005c       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(puts.o)
- .comment       0x0000005c       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(sprintf.o)
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -1104,62 +1152,62 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x5a07
+.debug_info     0x00000000     0x5b39
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x8ea C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
- .debug_info    0x000008ea      0xe32 main.o
- .debug_info    0x0000171c      0xc9e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_info    0x000023ba      0xab5 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_info    0x00002e6f      0x8cc sps30_hw_i2c_implementation.o
- .debug_info    0x0000373b     0x22cc scd41_driver/scd4x_i2c.o
+ .debug_info    0x000008ea      0xf64 main.o
+ .debug_info    0x0000184e      0xc9e sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_info    0x000024ec      0xab5 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_info    0x00002fa1      0x8cc sps30_hw_i2c_implementation.o
+ .debug_info    0x0000386d     0x22cc scd41_driver/scd4x_i2c.o
 
-.debug_abbrev   0x00000000     0x14dc
+.debug_abbrev   0x00000000     0x14e7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x86e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
- .debug_abbrev  0x0000086e      0x3d3 main.o
- .debug_abbrev  0x00000c41      0x267 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_abbrev  0x00000ea8      0x168 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_abbrev  0x00001010      0x23b sps30_hw_i2c_implementation.o
- .debug_abbrev  0x0000124b      0x291 scd41_driver/scd4x_i2c.o
+ .debug_abbrev  0x0000086e      0x3de main.o
+ .debug_abbrev  0x00000c4c      0x267 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_abbrev  0x00000eb3      0x168 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_abbrev  0x0000101b      0x23b sps30_hw_i2c_implementation.o
+ .debug_abbrev  0x00001256      0x291 scd41_driver/scd4x_i2c.o
 
-.debug_line     0x00000000     0x20f2
+.debug_line     0x00000000     0x21b6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1a5 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
- .debug_line    0x000001a5      0x6c2 main.o
- .debug_line    0x00000867      0x584 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_line    0x00000deb      0x3ec sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_line    0x000011d7      0x5bb sps30_hw_i2c_implementation.o
- .debug_line    0x00001792      0x960 scd41_driver/scd4x_i2c.o
+ .debug_line    0x000001a5      0x786 main.o
+ .debug_line    0x0000092b      0x584 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_line    0x00000eaf      0x3ec sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_line    0x0000129b      0x5bb sps30_hw_i2c_implementation.o
+ .debug_line    0x00001856      0x960 scd41_driver/scd4x_i2c.o
 
-.debug_frame    0x00000000      0xdc0
+.debug_frame    0x00000000      0xddc
  *(.debug_frame)
- .debug_frame   0x00000000      0x204 main.o
- .debug_frame   0x00000204      0x2bc sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_frame   0x000004c0      0x268 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_frame   0x00000728      0x1e0 sps30_hw_i2c_implementation.o
- .debug_frame   0x00000908      0x4b8 scd41_driver/scd4x_i2c.o
+ .debug_frame   0x00000000      0x220 main.o
+ .debug_frame   0x00000220      0x2bc sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_frame   0x000004dc      0x268 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_frame   0x00000744      0x1e0 sps30_hw_i2c_implementation.o
+ .debug_frame   0x00000924      0x4b8 scd41_driver/scd4x_i2c.o
 
-.debug_str      0x00000000     0x1638
+.debug_str      0x00000000     0x16aa
  *(.debug_str)
  .debug_str     0x00000000      0x318 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega328pb/avr5/crtatmega328pb.o
- .debug_str     0x00000318      0x536 main.o
-                                0x5cf (size before relaxing)
- .debug_str     0x0000084e      0x3bc sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_str     0x00000318      0x5fd main.o
+                                0x6c7 (size before relaxing)
+ .debug_str     0x00000915      0x418 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
                                 0x60c (size before relaxing)
- .debug_str     0x00000c0a      0x1ae sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_str     0x00000d2d      0x1ae sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
                                 0x553 (size before relaxing)
- .debug_str     0x00000db8      0x1d6 sps30_hw_i2c_implementation.o
+ .debug_str     0x00000edb      0x1d6 sps30_hw_i2c_implementation.o
                                 0x45c (size before relaxing)
- .debug_str     0x00000f8e      0x6aa scd41_driver/scd4x_i2c.o
+ .debug_str     0x000010b1      0x5f9 scd41_driver/scd4x_i2c.o
                                 0x9cc (size before relaxing)
 
-.debug_loc      0x00000000     0x4e3f
+.debug_loc      0x00000000     0x4f74
  *(.debug_loc)
- .debug_loc     0x00000000      0x6ec main.o
- .debug_loc     0x000006ec     0x1000 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_loc     0x000016ec      0x86a sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_loc     0x00001f56     0x100a sps30_hw_i2c_implementation.o
- .debug_loc     0x00002f60     0x1edf scd41_driver/scd4x_i2c.o
+ .debug_loc     0x00000000      0x821 main.o
+ .debug_loc     0x00000821     0x1000 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_loc     0x00001821      0x86a sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_loc     0x0000208b     0x100a sps30_hw_i2c_implementation.o
+ .debug_loc     0x00003095     0x1edf scd41_driver/scd4x_i2c.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1179,13 +1227,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x3f0
+.debug_ranges   0x00000000      0x3d8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xa8 main.o
- .debug_ranges  0x000000a8      0x100 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
- .debug_ranges  0x000001a8       0x90 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
- .debug_ranges  0x00000238       0x80 sps30_hw_i2c_implementation.o
- .debug_ranges  0x000002b8      0x138 scd41_driver/scd4x_i2c.o
+ .debug_ranges  0x00000000       0x90 main.o
+ .debug_ranges  0x00000090      0x100 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sensirion_common.o
+ .debug_ranges  0x00000190       0x90 sps30-i2c-3.1.1/sps30-i2c-3.1.1/sps30.o
+ .debug_ranges  0x00000220       0x80 sps30_hw_i2c_implementation.o
+ .debug_ranges  0x000002a0      0x138 scd41_driver/scd4x_i2c.o
 
 .debug_macro
  *(.debug_macro)
