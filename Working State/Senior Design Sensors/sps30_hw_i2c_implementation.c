@@ -258,6 +258,7 @@ uint8_t i2c_io(uint8_t device_addr, uint8_t *wp, uint16_t wn, uint8_t *rp, uint1
 }
 
 // from scd41 hal.c
+// writes to only scd41 
 int8_t sensirion_i2c_hal_write(uint8_t address, const uint8_t* data, uint16_t count) {
 	if(i2c_io(SCD41_ADDR, data, count, NULL, 0) != 0)
 		return STATUS_FAIL;
