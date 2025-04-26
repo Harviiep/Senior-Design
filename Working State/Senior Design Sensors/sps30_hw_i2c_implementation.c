@@ -162,7 +162,7 @@ uint8_t i2c_io(uint8_t device_addr, uint8_t *wp, uint16_t wn, uint8_t *rp, uint1
 	send_stop = 0;
 
 	// I2C0 selected
-	if(selected_bus = 0)
+	if(selected_bus == 0)
 	{
 		if (wn > 0) {
 			wrote = 1;
